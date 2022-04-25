@@ -16,11 +16,14 @@
     </properties>
 
     <dependencies>
+
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
+        <!--        g-a-v坐标-->
+        <!--        web依赖：继承tomcat，dispatchServlet，xml没了-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -46,6 +49,7 @@
         </dependencies>
     </dependencyManagement>
 
+    <!--打jar包插件-->
     <build>
         <plugins>
             <plugin>
