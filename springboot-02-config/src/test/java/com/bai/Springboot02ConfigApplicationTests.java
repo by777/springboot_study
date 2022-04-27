@@ -15,7 +15,7 @@ class Springboot02ConfigApplicationTests {
 
     @Test
     void contextLoads() {
-        System.out.println(dog);
+        //System.out.println(dog);
         System.out.println(person);
     }
 

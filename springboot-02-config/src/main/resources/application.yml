@@ -1,13 +1,16 @@
 person:
-  name: Vai Xu
+  name: Vai_Xu_No.${random.int}
   age: 18
   happy: false
   birth: 2022/04/27
   maps: { k1: v1, k2:v2 }
+  hello: happy
   lists:
     - music
     - code
+    - ${random.uuid}
   dog:
-    name: 旺财
+    # ${key:defaultValue}，若key不存在，则将defaultValue的值赋值给取值的对象。
+    name: ${person.hello:new_}旺财
     age: 3
 

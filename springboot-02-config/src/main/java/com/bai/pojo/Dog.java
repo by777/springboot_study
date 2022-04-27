@@ -5,9 +5,9 @@ import org.springframework.stereotype.Component;
 
 @Component// 添加到spring的组件里
 public class Dog {
-    @Value("旺财")//赋值
+//    @Value("旺财")//赋值
     private String name;
-    @Value("3")
+//    @Value("3")
     private Integer age;
 
     public Dog() {

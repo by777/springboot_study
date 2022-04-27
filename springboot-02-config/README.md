@@ -1,7 +1,13 @@
-# spring-boot配置项
 
+
+# Integer和int的区别
+在建立实体类时，用integer这个包装类比较好
+
+在数据库中，数据的默认值是 null，
+而在 Java 中，基本类型int的默认值不是 null
 spring支持yaml和properties配置
 
+# spring-boot配置项
 ```yaml
 #YAML支持多种方式书写
 # 1.--------------
@@ -25,14 +31,25 @@ pets:
   pets:[cat, dog, pig]
 ```
 
-yaml可以直接给实体类赋值。
-在建立实体类时,用integer这个包装类比较好
+通过yaml可以直接给实体类赋值，通过下方的注解选择properties还是yaml方式。
 
-在数据库中，数据的默认值是 null，而在 Java 中，基本类型的默认值不是 null，
+```java
 
-例如，int 类型的默认值是 0，而包装类Integer的默认值是 null，因为是对象。
-
-简单来说就是我们如果自定义了一个Student类,其中有一个属性成绩score，
-如果用Integer而不用int定义,一次考试，学生可能没考，值是null，也可能考了，但考了0分，值是0，
-这两个表达的状态明显不一样。
-
+/*方式1.不推荐：
+ * properties文件绑定，不能像YAML一样一键赋值，需要对具体属性使用@Value()赋值
+ * @PropertySource(value = "classpath:vaixu.properties")
+ */
+@Component
+@ConfigurationProperties(prefix = "person")//方式二，更简便实用✌
+public class Person {
+    // @Value("${name}")// SPEL表达式取出配置文件的值(for properties)
+    private String name;
+    private Integer age;
+    private Boolean happy;
+    private Date birth;
+    private Map<String, Object> maps;
+    private List<Object> lists;
+    private Dog dog;
+    
+```
+# P10 JSR303校验值

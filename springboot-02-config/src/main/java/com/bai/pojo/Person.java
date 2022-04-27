@@ -1,15 +1,22 @@
 package com.bai.pojo;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+/*方式1.不推荐：
+ * 通过properties文件实例化，不能像YAML一样一键赋值
+ * @PropertySource(value = "classpath:vaixu.properties")
+ */
 @Component
-@ConfigurationProperties(prefix = "person")
+@ConfigurationProperties(prefix = "person")//方式二，更简便实用
 public class Person {
+    // @Value("${name}")// SPEL表达式取出配置文件的值(for properties)
     private String name;
     private Integer age;
     private Boolean happy;
