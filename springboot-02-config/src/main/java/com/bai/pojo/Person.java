@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
 
+import javax.validation.constraints.Email;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -15,8 +17,10 @@ import java.util.Map;
  */
 @Component
 @ConfigurationProperties(prefix = "person")//方式二，更简便实用
+@Validated()//数据校验，与@Email()配合使用
 public class Person {
-    // @Value("${name}")// SPEL表达式取出配置文件的值(for properties)
+    // @Value("${name}")// SpEL表达式取出配置文件的值(for properties)
+    @Email(message = "用户名需要填写为邮箱格式！")
     private String name;
     private Integer age;
     private Boolean happy;
