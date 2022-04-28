@@ -13,4 +13,6 @@ person:
     # ${key:defaultValue}，若key不存在，则将defaultValue的值赋值给取值的对象。
     name: ${person.hello:new_}旺财
     age: 3
-
+---
+server:
+  port: 8081
