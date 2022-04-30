@@ -74,11 +74,57 @@ public class MainApplication {
 
 ```
 
-默认情况下，spring boot只扫描主程序所在的包及下级，
+包扫描规则：
+默认情况下，spring boot只扫描主程序MainApplication.java所在的包及其下级子包的组件。
 如需修改可以在
+
+```java
+import org.springframework.context.annotation.ComponentScan;
+
 @SpringBootApplication(scanBasePackages = "com.bai")
-或者@ComponentsScan()指定扫描路径
+/* 或者@ComponentsScan()指定扫描路径:
+ * SpringBootApplication是一个合成注解
+ * =================================
+ * @SpringBootConfiguration
+ * @EnableAutoConfiguration
+ * @ComponentScan("com.bai")
+ */
+
+```
 
 # P118 基础入门：spring boot自动配置
 
-各项配置拥有默认值，默认配置最终都是映射到MultipartProperties类
+## NOTE
+
+各项配置拥有默认值，
+默认配置最终都是映射到MultipartProperties类。
+配置文件的值，最终会绑定到某个类上，这个类会在容器中创建对象。
+按需添加所有自动配置项，Spring boot有许多的starter，
+引入了该场景才会自动配置。
+Spring boot 所有的自动配置都在spring-boot-autoconfigure包里面
+
+# P119 @Configuration详解
+
+添加两个组件User和Pet
+
+```java
+
+@SpringBootApplication(scanBasePackages = "com.bai")//scanBasePackages = "com.bai"
+public class MainApplication {
+    public static void main(String[] args) {
+        // 1.返回我们的IoC容器
+        ConfigurableApplicationContext run = SpringApplication.run(MainApplication.class, args);
+        // 2.查看容器里的组件
+        String[] names = run.getBeanDefinitionNames();
+        for (String name : names) {
+            System.out.println(name);
+        }
+        // 从容器中获取注册的组件，默认是单实例的
+        Pet tom01 = run.getBean("tom", Pet.class);
+        Pet tom02 = run.getBean("tom", Pet.class);
+        System.out.println(tom01 == tom02); // true
+    }
+}
+```
+
+# P119 @Import
