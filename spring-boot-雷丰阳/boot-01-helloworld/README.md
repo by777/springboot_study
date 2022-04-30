@@ -78,3 +78,7 @@ public class MainApplication {
 如需修改可以在
 @SpringBootApplication(scanBasePackages = "com.bai")
 或者@ComponentsScan()指定扫描路径
+
+# P118 基础入门：spring boot自动配置
+
+各项配置拥有默认值，默认配置最终都是映射到MultipartProperties类
