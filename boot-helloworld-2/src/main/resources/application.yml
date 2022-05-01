@@ -1,0 +1,24 @@
+# 常规使用单双引号无引号都可以，但是加双引号会转义字符
+# 单引号会作为字符串输出，双引号不会转义（在控制台里\n执行换行，但是json也可能会自动转义）。
+person:
+  userName: "张三\n"
+  boss: true
+  birth: 2019/12/9
+  age: 2
+  interests: [ 篮球, 足球 ]
+  animal: [ 阿猫, 阿狗 ]
+  score: { english: 140,math: 150 }
+  salarys:
+    - 99999.98
+    - 99999.99
+  pet:
+    name: 阿狗
+    weight: 19.9
+  allPets:
+    sick:
+      - { name: 阿猫, weight: 99.99 }
+      - name: 阿狗
+        weight: 88.88
+      - name: 啊虫
+        weight: 1.0
+    health: [ { name: 阿花, weight: 10 },{ name: 阿明, weight: 100 } ]

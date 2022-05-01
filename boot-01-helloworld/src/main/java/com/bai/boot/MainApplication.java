@@ -1,10 +1,12 @@
 package com.bai.boot;
 
+import ch.qos.logback.core.db.DBHelper;
 import com.bai.boot.bean.Pet;
 import com.bai.boot.bean.User;
 import com.bai.boot.config.MyConfig;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.ConfigurableApplicationContext;
 
 /*
@@ -13,6 +15,7 @@ import org.springframework.context.ConfigurableApplicationContext;
  * 所谓IOC，对于spring框架来说，就是由spring来负责控制对象的生命周期和对象间的关系。
  * DI（Dependency Injection，依赖注入）。IOC的一个重点是在系统运行中，动态的向某个对象提供它所需要的其他对象。
  */
+
 @SpringBootApplication(scanBasePackages = "com.bai")//scanBasePackages = "com.bai"
 public class MainApplication {
     public static void main(String[] args) {
@@ -41,5 +44,18 @@ public class MainApplication {
         Pet tom = run.getBean("tom", Pet.class);
         System.out.println("查看user的宠物，是否是容器里面的宠物proxyBeanMethods = true");
         System.out.println(tom == user1.getPet());
+
+        // 5.获取组件
+        System.out.println("=======");
+        String[] beanNamesForType = run.getBeanNamesForType(User.class);
+        for (String s : beanNamesForType) {
+            System.out.println(s);
+        }
+        String[] beanNamesForType1 = run.getBeanNamesForType(DBHelper.class);
+        for (String s : beanNamesForType1) {
+            System.out.println(s);
+        }
+        boolean tom1 = run.containsBean("tom1");
+        System.out.println("容器中是否存在tom1：" + tom1);
     }
 }

@@ -1,10 +1,8 @@
-
-
 # 环境准备
+
 java -version: 1.8.0
 
 mvn -v: 3.6.1
-
 
 | x      | 地址                                                                        |
 |:-------|:--------------------------------------------------------------------------|
@@ -135,4 +133,37 @@ public class MainApplication {
 }
 ```
 
-# P119 @Import
+# P119 @Import @Conditional @ImportResource
+
++ @Component：代表组件
++ @Controller：控制器
++ @Service：业务逻辑组件
++ @Repository：数据库层组件
++ @ComponentScan：配置包扫描
++ @Import：给容器中导入一个组件
+    + @Import({User.class, DBHelper.class})可以给容器中自动创建出这两个类型的组件
++ @ConditionalOnXXX：满足指定的条件时，进行组件注入
++ @ImportResource：在配置类上@ImportResource("classpath:beans.xml)就可以把有以前配置文件的bean导入
+
+# P123配置绑定
+
+使用Java读取properties文件的内容，并封装到java bean中。
+方式1. 只需要一个注解@ConfigurationProperties就行了
+方式2. @EnableConfigurationProperties + @ConfigureProperties
+
+# P127 最佳实践
+
+```xml
+<!--dev-tools项目或者页面修改以后：Ctrl+F9；-->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-devtools</artifactId>
+    <optional>true</optional>
+</dependency>
+```
+
+# P130 Spring initializer
+
++ resources/
+    + static/ 存放静态资源css等
+    + templates/ web页面
