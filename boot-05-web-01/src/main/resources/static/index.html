@@ -22,13 +22,38 @@
 
 <form action="/user" method="post">
     <input value="REST - PUT提交" type="submit">
-    <input  name="_method"  value="put" type="hidden">
+    <input name="_method" value="put" type="hidden">
 </form>
 
 <form action="/user" method="post">
     <input value="REST - DELETE提交" type="submit">
-    <input  name="_method"  value="DELETE" type="hidden">
+    <input name="_method" value="DELETE" type="hidden">
 </form>
 
+<ul>
+    <a href="car/3/owner/李四">car/3/owner/李四</a>
+    <li>@PathVariable（路径变量）</li>
+    <li>@RequestHeader（获取请求头）</li>
+    <a href="car/3/owner/lisi?age=18&interest=basket&interest=game">car/3/owner/lisi?age=18&interest=basket&interest=game</a>
+    <li>@RequestParam（获取请求参数）</li>
+    <li>@CookieValue（获取cookie值）</li>
+    <li>@RequestBody（获取请求体【POST表单】）</li>
+    <form method="post" action="/save">
+        测试@RequestBody获取数据<br/>
+        <input name="name" value="你的名字">
+        <input name="email" value="你的邮箱">
+        <input type="submit" value="提交">
+    </form>
+    <li>@RequestAttribute（获取request域属性）</li>
+
+    <li>@MatrixVariable（获取矩阵变量：应该绑定在路径中）</li>
+    <a href="/cars/sell;"></a>
+    /cars/{path}?xxx=yyy&aaa=bbb 称之为查询字符串queryString，获取使用@RequestParam
+    <br/>
+    矩阵变量应该绑定在路径中，看成一个整体
+    /car/{path;low=34,brand=byd,audi,yd}为矩阵变量
+    补充：页面开发如果cookie被禁用了，session中的内容如何使用：
+    可以通过url重写：/abc;jsessionid=xxx把cookie中的值通过矩阵变量传递过来
+</ul>
 </body>
 </html>

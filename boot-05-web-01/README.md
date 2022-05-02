@@ -1,4 +1,5 @@
 # 静态资源目录
+
 + /static
 + /public
 + /resources
@@ -14,6 +15,7 @@ spring.resources.static_locations=classpath:/${static_resource}
 pom.xml导入jquery依赖
 
 开启RESTFUL风格表单
+
 ```yaml
 spring:
   mvc:
@@ -37,11 +39,13 @@ spring:
 
 <form action="/user" method="post">
     <input value="REST - PUT提交" type="submit">
-    <input  name="_method"  value="put" type="hidden">
+    <input name="_method" value="put" type="hidden">
 </form>
 
 <form action="/user" method="post">
     <input value="REST - DELETE提交" type="submit">
-    <input  name="_method"  value="DELETE" type="hidden">
+    <input name="_method" value="DELETE" type="hidden">
 </form>
 ```
+
+# P140 普通参数与基本注解
