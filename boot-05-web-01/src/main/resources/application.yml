@@ -1,0 +1,9 @@
+# 开启此配置会导致index.html不能默认访问
+#spring:
+#  mvc:
+#    static-path-pattern: /res/**
+spring:
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h5>
+    spring boot会自动添加favicon.ico，
+    但是注意要ctrl+F5清除缓存测试</h5>
+<h3>测试REST风格请求</h3>
+<form action="/user" method="get">
+
+    <input value="REST - GET提交" type="submit">
+</form>
+
+
+<form action="/user" method="post">
+    <input value="REST - POST提交" type="submit">
+    <input name="_method" value="POST" type="hidden">
+</form>
+
+<form action="/user" method="post">
+    <input value="REST - PUT提交" type="submit">
+    <input  name="_method"  value="put" type="hidden">
+</form>
+
+<form action="/user" method="post">
+    <input value="REST - DELETE提交" type="submit">
+    <input  name="_method"  value="DELETE" type="hidden">
+</form>
+
+</body>
+</html>
