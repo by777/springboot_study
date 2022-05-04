@@ -2,18 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>各种参数注解</title>
 </head>
 <body>
 <h5>
     spring boot会自动添加favicon.ico，
-    但是注意要ctrl+F5清除缓存测试</h5>
+    但是注意要ctrl+F5清除缓存测试
+</h5>
 <h3>测试REST风格请求</h3>
-<form action="/user" method="get">
 
+<form action="/user" method="get">
     <input value="REST - GET提交" type="submit">
 </form>
-
 
 <form action="/user" method="post">
     <input value="REST - POST提交" type="submit">
@@ -47,13 +47,24 @@
     <li>@RequestAttribute（获取request域属性）</li>
 
     <li>@MatrixVariable（获取矩阵变量：应该绑定在路径中）</li>
-    <a href="/cars/sell;"></a>
-    /cars/{path}?xxx=yyy&aaa=bbb 称之为查询字符串queryString，获取使用@RequestParam
+    <a href="/cars/sell;low=34;brand=byd,audi,yd">/cars/sell;low=34;brand=byd,audi,yd</a>
+    /cars/{path}?xxx=yyy&aaa=bbb 称之为查询字符串queryString，获取使用@RequestParam(
     <br/>
-    矩阵变量应该绑定在路径中，看成一个整体
-    /car/{path;low=34,brand=byd,audi,yd}为矩阵变量
-    补充：页面开发如果cookie被禁用了，session中的内容如何使用：
-    可以通过url重写：/abc;jsessionid=xxx把cookie中的值通过矩阵变量传递过来
+    此外，还有另外一种获取的方式，矩阵变量
+    矩阵变量应该绑定在路径中，看成一个整体绑定在路径变量中
+    /car/{path;low=34;brand=byd,audi,yd}为矩阵变量
+    之前的面试题：
+    页面开发如果cookie被禁用了，session中的内容如何使用：
+    cookie，session的机制时，给session中保存了一个东西，session.set("a",b)，每一个人每一个session都有一个sessionID、叫jsessionid。
+    jsessionid保存至cookie里面。而cookie又是每次发请求都会携带，服务器按照jsessionid找到这个session对象。
+    然后调用session对象的get方法，找到session里面的内容。如果cookie被禁用了，jsessionid由于存在cookie里面，jsessionid携带不上。
+    这样cookie上带不了，就用矩阵变量的方式
+
+    可以通过url重写：/abc;jsessionid=xxx把cookie中的值通过矩阵变量传递过来。
+    真实路径是/car/sell;low=34,brand=byd,audi,yd;
+    <hr/>
+    矩阵变量，有两个age的值，如何获取
+    <a href="/boss/1;age=20/2;age=10">/boss/1;age=20/2;age=10</a>
 </ul>
 </body>
 </html>
