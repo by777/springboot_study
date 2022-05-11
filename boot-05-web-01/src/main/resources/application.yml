@@ -7,3 +7,7 @@ spring:
     hiddenmethod:
       filter:
         enabled: true
+# 以后所有的请求都必须以/world开始
+server:
+  servlet:
+    context-path: /world

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ch" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>success-thymeleaf</title>
+</head>
+<body>
+<h1 th:text="${msg}">哈哈：success</h1>
+<h2>
+    <a href="https://www.atguigu.com" th:href="${link}"> $去百度</a>
+    <a href="https://www.atguigu.com" th:href="@{/link}">
+        @{}会添加前置路径</a>
+</h2>
+</body>
+</html>
